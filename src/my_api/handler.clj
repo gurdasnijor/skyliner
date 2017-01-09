@@ -29,7 +29,17 @@
         (ok {:result (+ x y)}))
 
       (POST "/echo" []
-        :return Pizza
         :body [pizza Pizza]
         :summary "echoes a Pizza"
         (ok pizza)))))
+
+
+
+  ;
+  ; fetch("/api/echo", {
+  ;   method: "POST",
+  ;   body: JSON.stringify({ name: 'asdf', size: 'L', origin: {country: "FI", city: "ads"} }),
+  ;   headers: new Headers({
+  ;     'Content-Type': 'application/json'
+  ;   })
+  ; });
