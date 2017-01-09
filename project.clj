@@ -4,7 +4,7 @@
                  [metosin/compojure-api "1.1.8"]]
   :ring {
     :handler my-api.handler/app
-    :port 8111
+    :port 8080
     :auto-reload? true
     :nrepl {:start? true}}
   :profiles
