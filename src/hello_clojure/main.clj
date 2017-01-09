@@ -22,7 +22,7 @@
   [join?]
   (jetty/run-jetty handler/app
                    {:configurator         configure-server
-                    :port                 8080
+                    :port                 8111
                     :join?                join?
                     :daemon?              false
                     :http?                true

@@ -19,3 +19,6 @@
   []
   (stop)
   (tn/refresh :after 'user/go))
+
+(go)
+(reset)

@@ -8,7 +8,12 @@
                  [org.eclipse.jetty/jetty-server "9.3.14.v20161028"]
                  [ring "1.6.0-beta6"]
                  [ring/ring-defaults "0.3.0-beta1"]
-                 [spootnik/unilog "0.7.15"]]
+                 [io.nervous/hildebrand "0.4.5"]
+                 [ring/ring-json "0.5.0-beta1"]
+                 [org.clojure/core.async "0.2.395"]
+                 [spootnik/unilog "0.7.15"]
+                 [com.stuartsierra/component "0.3.2"]
+                 [org.clojure/core.match  "0.3.0-alpha4"]]
   :plugins [[lein-ring "0.9.7"]]
   :main ^:skip-aot hello-clojure.main
   :target-path "target/%s/" ; don't get AOT in your REPL
