@@ -1,21 +1,24 @@
-# hello-clojure
+# my-api
 
 FIXME
 
-## Prerequisites
+## Usage
 
-You will need [Leiningen][] 2.0.0 or above installed.
+### Run the application locally
 
-[leiningen]: https://github.com/technomancy/leiningen
+`lein ring server`
 
-## Running
+### Packaging and running as standalone jar
 
-To start a web server for the application, run:
+```
+lein do clean, ring uberjar
+java -jar target/server.jar
+```
 
-    lein ring server
+### Packaging as war
+
+`lein ring uberwar`
 
 ## License
 
-Copyright © 2016 FIXME
-
-Repo created by Skyliner app templates at 2016-12-29T07:28:08.305Z
+Copyright ©  FIXME
