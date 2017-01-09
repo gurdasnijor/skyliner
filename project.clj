@@ -7,6 +7,10 @@
     :port 8111
     :auto-reload? true
     :nrepl {:start? true}}
-  :uberjar-name "server.jar"
-  :profiles {:dev {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]]
+  :profiles
+    {:uberjar {:omit-source true
+               :env {:production true}
+               :aot :all}
+
+    :dev {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]]
                    :plugins [[lein-ring "0.10.0"]]}})

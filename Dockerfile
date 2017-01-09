@@ -3,7 +3,7 @@ from alpine:edge
 ENV BUILD_DEPS="bash build-base libpng-dev zlib-dev autoconf automake libtool nasm curl" \
     RUN_DEPS="openssh-client openjdk8-jre" \
     LEIN_ROOT=1 \
-    PORT=80
+    PORT=8080
 
 WORKDIR /build
 COPY . .
@@ -16,7 +16,7 @@ RUN \
   chmod +x /usr/local/bin/lein && \
 
   lein ring uberjar && \
-  mkdir /app && mv target/*-SNAPSHOT.jar /app/app.jar && \
+  mkdir /app && mv target/*-standalone.jar /app/app.jar && \
   rm -rf /build ~/.m2 ~/.lein && \
 
   apk del $BUILD_DEPS && \

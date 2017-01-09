@@ -48,7 +48,7 @@
       :data {:info {:title "My-api"
                     :description "Event sourcing + falcor-style query example"}
              :tags [{:name "api", :description "some apis"}]}}}
-
+    (GET "/healthcheck" [] "OK")
     (context "/api" []
       :tags ["api"]
       (GET "/query" []
