@@ -5,7 +5,8 @@
   :ring {
     :handler my-api.handler/app
     :port 8111
-    :auto-reload? true}
+    :auto-reload? true
+    :nrepl {:start? true}}
   :uberjar-name "server.jar"
   :profiles {:dev {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]]
                    :plugins [[lein-ring "0.10.0"]]}})
