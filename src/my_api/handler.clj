@@ -32,6 +32,13 @@
 
 
 
+
+(defn gen-tx [id]
+  {:db/id id
+   :user/name (clojure.string/concat "ADF" "Asdf")
+   :user/email "pw@gmail.com"
+   :user/follows [{:$type "ref" :value [:user/id "1"]}]})
+
 (swap! txs
   #(conj %
     {:db/id "8"
@@ -46,7 +53,7 @@
      {:ui "/"
       :spec "/swagger.json"
       :data {:info {:title "My-api"
-                    :description "Event sourcing + falcor-style query example"}
+                    :description "Basic API example"}
              :tags [{:name "api", :description "some apis"}]}}}
     (GET "/healthcheck" [] "OK")
     (context "/api" []
