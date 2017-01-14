@@ -33,12 +33,6 @@
 
 
 
-(defn gen-tx [id]
-  {:db/id id
-   :user/name (clojure.string/concat "ADF" "Asdf")
-   :user/email "pw@gmail.com"
-   :user/follows [{:$type "ref" :value [:user/id "1"]}]})
-
 (swap! txs
   #(conj %
     {:db/id "8"
