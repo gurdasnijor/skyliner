@@ -1,0 +1,16 @@
+version: '2'
+services:
+  # Web tier services
+  web:
+    command: ["/srv/Skyliner/bin/web"]
+    build: .
+    ports:
+      - 80:8080
+      - 52286:52286
+    links:
+      - redis
+  # Persistance/cache services
+  redis:
+    image: convox/redis
+    ports:
+      - 6379

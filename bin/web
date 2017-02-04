@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# if [ "$NODE_ENV" == "development" ]; then
+#   $(npm bin)/nodemon web.js "$@"
+# else
+#   node web.js "$@"
+# fi
+
+
+lein repl :headless :host 0.0.0.0 :port 52286 & lein ring server
+# java -jar app.jar

@@ -1,11 +1,46 @@
 (ns my-api.handler
   (:require [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
-            [schema.core :as s]))
+            [schema.core :as s]
+            [datomic.api :as d]))
 
 
 (s/defschema TxRequest
   {:txs [s/Any]})
+
+
+(defn some-stuf []
+  (map count '([])))
+
+  (d/q '[:find ?first
+         :where [_ :firstName ?first]]
+     [[1 :firstName "John" 42]
+      [1 :lastName "Doe" 42]])
+
+
+ 
+
+  (def init-data
+    {:dashboard/items
+     [{:id 0 :type :dashboard/post
+       :author "Laura Smith"
+       :title "A Post!"
+       :content "Lorem ipsum dolor sit amet, quem atomorum te quo"}
+      {:id 1 :type :dashboard/photo
+       :title "A Photo!"
+       :image "photo.jpg"
+       :caption "Lorem ipsum"}
+      {:id 2 :type :dashboard/post
+       :author "Jim Jacobs"
+       :title "Another Post!"
+       :content "Lorem ipsum dolor sit amet, quem atomorum te quo"}
+      {:id 3 :type :dashboard/graphic
+       :title "Charts and Stufff!"
+       :image "chart.jpg"}
+      {:id 4 :type :dashboard/post
+       :author "May Fields"
+       :title "Yet Another Post!"
+       :content "Lorem ipsum dolor sit amet, quem atomorum te quo"}]})
 
 
 
@@ -31,12 +66,10 @@
 ]))
 
 
-
-
 (swap! txs
   #(conj %
     {:db/id "8"
-     :user/name "A dfghdfghfg name"
+     :user/name "b"
      :user/email "pw@gmail.com"
      :user/follows [{:$type "ref" :value [:user/id "1"]}]}))
 
@@ -52,8 +85,17 @@
     (GET "/healthcheck" [] "OK")
     (context "/api" []
       :tags ["api"]
-      (GET "/query" []
+      (GET "/ogql" [request]
+        :query-params [query :- String]
+        (prn (read-string query))
+        (prn "asdfasdfasdf")
         (ok (reduce build-id-idx {} @txs)))
       (POST "/command" [request]
         :body [txs TxRequest]
           (ok txs)))))
+
+
+
+;http://0.0.0.0/api/ogql?query=[[:db%208]]
+
+; localhost:8080/api/ogql?query=[[:db 8]]
